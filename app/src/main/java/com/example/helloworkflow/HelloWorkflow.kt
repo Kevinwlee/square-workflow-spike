@@ -39,8 +39,10 @@ object HelloWorkflow : StatefulWorkflow<Unit, State, Nothing, Rendering>() {
         context: RenderContext<State, Nothing>
     ): Rendering {
         val sink = context.makeActionSink<WorkflowAction<State, Nothing>>()
+
+
         return Rendering(
-            message = state.name,
+            message = "I want to say ${state.name}",
             onClick = { sink.send(helloAction) }
         )
     }
